@@ -14,71 +14,93 @@ gsap.registerPlugin(ScrollTrigger);
 
 const useGSAPAnimation = (mainRef, reactRef, skillsRef, ContactsRef) => {
   useEffect(() => {
-    let tl;
+    let mm = gsap.matchMedia(); // Initialize matchMedia
 
-    const updateAnimation = () => {
-      const adjustValue =
-        window.innerWidth >= 1024
-          ? 355
-          : window.innerWidth >= 768
-          ? -275
-          : window.innerWidth >= 480
-          ? -35
-          : window.innerWidth >= 391
-          ? (182.1*2.9)
-          : -245;
+    mm.add(
+      {
+        isDesktop: "(min-width: 1024px)",
+        isTablet: "(min-width: 768px) and (max-width: 1023px)",
+        isMobile: "(min-width: 480px) and (max-width: 767px)",
+        isSmallMobile: "(min-width: 391px) and (max-width: 479px)",
+        isVerySmallMobile: "(max-width: 390px)",
+      },
+      (context) => {
+        let { isDesktop, isTablet, isMobile, isSmallMobile, isVerySmallMobile } =
+          context.conditions;
 
-      const skillsPosition =
-        ContactsRef.current.getBoundingClientRect().top +
-        window.scrollY -
-        adjustValue;
+        let adjustValue;
+        let initialScale;
+        let toScale;
 
-      const initialScale = window.innerWidth >= 768 ? 0.635 : 0.415;
-      const toScale = window.innerWidth >= 768 ? 0.25 : 0.215;
+        // Determine adjustValue, initialScale, and toScale based on screen size
+        if (isDesktop) {
+          adjustValue = 315;
+          initialScale = 0.635;
+          toScale = 0.25;
+        } else if (isTablet) {
+          adjustValue = -275;
+          initialScale = 0.635;
+          toScale = 0.25;
+        } else if (isMobile) {
+          adjustValue = -35;
+          initialScale = 0.415;
+          toScale = 0.215;
+        } else if (isSmallMobile) {
+          adjustValue = 45;
+          initialScale = 0.415;
+          toScale = 0.215;
+        } else if (isVerySmallMobile) {
+          adjustValue = -245;
+          initialScale = 0.415;
+          toScale = 0.215;
+        }
 
-      // Kill any existing timelines to avoid conflicts
-      if (tl) {
-        tl.kill();
+        const skillsPosition =
+          ContactsRef.current.getBoundingClientRect().top +
+          window.scrollY -
+          adjustValue;
+
+        let tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: mainRef.current,
+            start: "50% 90%",
+            end: `${skillsPosition}px`,
+            scrub: 1,
+            markers: false,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        tl.from(reactRef.current, {
+          scale: initialScale,
+        }).to(reactRef.current, {
+          top: `${skillsPosition}px`,
+          scale: toScale,
+          ease: "power2.inOut",
+          duration: 3,
+        });
+
+        return () => {
+          tl.kill();
+        };
       }
-
-      // First timeline
-      tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: mainRef.current,
-          start: "50% 90%",
-          end: `${skillsPosition}px`,
-          scrub: 1,
-          markers: false, // Set to true if you need debugging
-          invalidateOnRefresh: true,
-        },
-      });
-
-      tl.from(reactRef.current, {
-        scale: initialScale,
-      }).to(reactRef.current, {
-        top: `${skillsPosition}px`,
-        scale: toScale,
-        ease: "power2.inOut",
-        duration: 3,
-      });
-    };
+    );
 
     const debounceUpdate = () => {
       clearTimeout(window.updateTimeout);
-      window.updateTimeout = setTimeout(updateAnimation, 200);
+      window.updateTimeout = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 200);
     };
 
-    updateAnimation();
     window.addEventListener("resize", debounceUpdate);
-    ScrollTrigger.refresh();
 
     return () => {
       window.removeEventListener("resize", debounceUpdate);
-      ScrollTrigger.killAll();
+      mm.revert(); // Revert matchMedia settings on cleanup
     };
   }, [mainRef, reactRef, skillsRef, ContactsRef]);
-};
-
+}
 const App = () => {
   const mainRef = useRef(null);
   const reactRef = useRef(null);
