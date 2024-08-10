@@ -25,7 +25,7 @@ const useGSAPAnimation = (mainRef, reactRef, skillsRef, ContactsRef) => {
           : window.innerWidth >= 480
           ? -35
           : window.innerWidth >= 391
-          ? 185
+          ? (182.1*2.9)
           : -245;
 
       const skillsPosition =
