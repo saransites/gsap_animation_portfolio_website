@@ -17,6 +17,10 @@ const useGSAPAnimation = (mainRef, reactRef, skillsRef) => {
   useEffect(() => {
     const locoScroll = new LocomotiveScroll({
       el: mainRef.current,
+      smoooth:true,
+      tablet: {
+    breakpoint: 0, 
+  }
     });
 
     locoScroll.on("scroll", ScrollTrigger.update);
