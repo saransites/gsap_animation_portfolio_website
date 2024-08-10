@@ -17,6 +17,9 @@ const useGSAPAnimation = (mainRef, reactRef, skillsRef) => {
   useEffect(() => {
     const locoScroll = new LocomotiveScroll({
       el: mainRef.current,
+      smooth: true,
+      tablet: { smooth: true },
+      smartphone: { smooth: true },
     });
 
     locoScroll.on("scroll", ScrollTrigger.update);
@@ -46,8 +49,9 @@ const useGSAPAnimation = (mainRef, reactRef, skillsRef) => {
           ? -275
           : window.innerWidth >= 480
           ? -35
-          : window.innerWidth >= 391? -220
-          : -245
+          : window.innerWidth >= 391
+          ? -220
+          : -245;
 
       const skillsPosition =
         skillsRef.current.getBoundingClientRect().top +
@@ -115,28 +119,29 @@ const App = () => {
       ProjectsRef.current,
       skillsRef.current,
     ]);
-    sections.forEach((section,i)=>{
-      const animate=gsap.fromTo(
-        section,{
-          autoAlpha:0.5,
-          y:100,
-          x:-100,
-          rotate:5
+    sections.forEach((section, i) => {
+      const animate = gsap.fromTo(
+        section,
+        {
+          autoAlpha: 0.5,
+          y: 100,
+          x: -100,
+          rotate: 5,
         },
         {
-          duration:1.5,
-          autoAlpha:1,
-          x:0,
-          y:0,
-          rotate:0,
+          duration: 1.5,
+          autoAlpha: 1,
+          x: 0,
+          y: 0,
+          rotate: 0,
         }
       );
       ScrollTrigger.create({
-        trigger:section,
-        animation:animate,
-        scrub:true
-      })
-    })
+        trigger: section,
+        animation: animate,
+        scrub: true,
+      });
+    });
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
