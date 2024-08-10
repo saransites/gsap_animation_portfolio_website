@@ -15,31 +15,44 @@ gsap.registerPlugin(ScrollTrigger);
 
 const useGSAPAnimation = (mainRef, reactRef, skillsRef) => {
   useEffect(() => {
-    const locoScroll = new LocomotiveScroll({
-      el: mainRef.current,
-      smooth: true,
-      tablet: { smooth: true },
-      smartphone: { smooth: true },
-    });
+    let locoScroll = null;
 
-    locoScroll.on("scroll", ScrollTrigger.update);
+    const initializeScroll = () => {
+      locoScroll = new LocomotiveScroll({
+        el: mainRef.current,
+        smooth: false,
+        smartphone: {
+          smooth: false,
+        },
+        tablet: {
+          smooth: true,
+        },
+      });
 
-    ScrollTrigger.scrollerProxy(mainRef.current, {
-      scrollTop(value) {
-        return arguments.length
-          ? locoScroll.scrollTo(value, 0, 0)
-          : locoScroll.scroll.instance.scroll.y;
-      },
-      getBoundingClientRect() {
-        return {
-          top: 0,
-          left: 0,
-          width: window.innerWidth,
-          height: window.innerHeight,
-        };
-      },
-      pinType: mainRef.current.style.transform ? "transform" : "fixed",
-    });
+      locoScroll.on('scroll', () => {
+        ScrollTrigger.update(); // Ensure ScrollTrigger updates on scroll
+      });
+
+      ScrollTrigger.scrollerProxy(mainRef.current, {
+        scrollTop(value) {
+          return arguments.length
+            ? locoScroll.scrollTo(value, 0, 0)
+            : locoScroll.scroll.instance.scroll.y;
+        },
+        getBoundingClientRect() {
+          return {
+            top: 0,
+            left: 0,
+            width: window.innerWidth,
+            height: window.innerHeight,
+          };
+        },
+        pinType: mainRef.current.style.transform ? 'transform' : 'fixed',
+      });
+
+      ScrollTrigger.addEventListener('refresh', () => locoScroll.update());
+      ScrollTrigger.refresh();
+    };
 
     const updateAnimation = () => {
       const adjustValue =
@@ -47,10 +60,6 @@ const useGSAPAnimation = (mainRef, reactRef, skillsRef) => {
           ? 285
           : window.innerWidth >= 768
           ? -275
-          : window.innerWidth >= 480
-          ? -35
-          : window.innerWidth >= 391
-          ? -220
           : -245;
 
       const skillsPosition =
@@ -59,37 +68,43 @@ const useGSAPAnimation = (mainRef, reactRef, skillsRef) => {
         adjustValue;
 
       const initialScale = window.innerWidth >= 768 ? 0.6 : 0.5;
+
       gsap.fromTo(
         reactRef.current,
         { scale: initialScale, x: -50 },
         {
           x: 0,
           rotate: 360,
-          scale: 0.235,
+          scale: window.innerWidth >= 768 ? 0.235 : 0.3,
           scrollTrigger: {
             trigger: reactRef.current,
             scroller: mainRef.current,
-            start: "top 0",
+            start: 'top 0',
             end: `${skillsPosition}px`,
             scrub: true,
             pin: true,
+            invalidateOnRefresh: true,
           },
         }
       );
     };
 
+    initializeScroll();
     updateAnimation();
-    ScrollTrigger.refresh();
 
-    window.addEventListener("resize", updateAnimation);
+    window.addEventListener('resize', () => {
+      updateAnimation();
+      locoScroll.update();
+    });
 
     return () => {
-      locoScroll.destroy();
+      if (locoScroll) locoScroll.destroy();
       ScrollTrigger.killAll();
-      window.removeEventListener("resize", updateAnimation);
+      window.removeEventListener('resize', updateAnimation);
     };
   }, [mainRef, reactRef, skillsRef]);
 };
+
 
 const App = () => {
   const mainRef = useRef(null);
