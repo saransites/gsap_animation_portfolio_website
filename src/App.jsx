@@ -7,104 +7,77 @@ import Contacts from "./components/Contacts";
 import react from "./assets/react.png";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import LocomotiveScroll from "locomotive-scroll";
 
 const GlobalContext = createContext();
 
 gsap.registerPlugin(ScrollTrigger);
 
-const useGSAPAnimation = (mainRef, reactRef, skillsRef) => {
+const useGSAPAnimation = (mainRef, reactRef, skillsRef, ContactsRef) => {
   useEffect(() => {
-    let locoScroll = null;
-
-    const initializeScroll = () => {
-      locoScroll = new LocomotiveScroll({
-        el: mainRef.current,
-        smooth: false,
-        smartphone: {
-          smooth: false,
-        },
-        tablet: {
-          smooth: true,
-        },
-      });
-
-      locoScroll.on('scroll', () => {
-        ScrollTrigger.update(); // Ensure ScrollTrigger updates on scroll
-      });
-
-      ScrollTrigger.scrollerProxy(mainRef.current, {
-        scrollTop(value) {
-          return arguments.length
-            ? locoScroll.scrollTo(value, 0, 0)
-            : locoScroll.scroll.instance.scroll.y;
-        },
-        getBoundingClientRect() {
-          return {
-            top: 0,
-            left: 0,
-            width: window.innerWidth,
-            height: window.innerHeight,
-          };
-        },
-        pinType: mainRef.current.style.transform ? 'transform' : 'fixed',
-      });
-
-      ScrollTrigger.addEventListener('refresh', () => locoScroll.update());
-      ScrollTrigger.refresh();
-    };
+    let tl;
 
     const updateAnimation = () => {
       const adjustValue =
         window.innerWidth >= 1024
-          ? 285
+          ? 355
           : window.innerWidth >= 768
           ? -275
+          : window.innerWidth >= 480
+          ? -35
+          : window.innerWidth >= 391
+          ? 185
           : -245;
 
       const skillsPosition =
-        skillsRef.current.getBoundingClientRect().top +
+        ContactsRef.current.getBoundingClientRect().top +
         window.scrollY -
         adjustValue;
 
-      const initialScale = window.innerWidth >= 768 ? 0.6 : 0.5;
+      const initialScale = window.innerWidth >= 768 ? 0.635 : 0.415;
+      const toScale = window.innerWidth >= 768 ? 0.25 : 0.215;
 
-      gsap.fromTo(
-        reactRef.current,
-        { scale: initialScale, x: -50 },
-        {
-          x: 0,
-          rotate: 360,
-          scale: window.innerWidth >= 768 ? 0.235 : 0.3,
-          scrollTrigger: {
-            trigger: reactRef.current,
-            scroller: mainRef.current,
-            start: 'top 0',
-            end: `${skillsPosition}px`,
-            scrub: true,
-            pin: true,
-            invalidateOnRefresh: true,
-          },
-        }
-      );
+      // Kill any existing timelines to avoid conflicts
+      if (tl) {
+        tl.kill();
+      }
+
+      // First timeline
+      tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: mainRef.current,
+          start: "50% 90%",
+          end: `${skillsPosition}px`,
+          scrub: 1,
+          markers: false, // Set to true if you need debugging
+          invalidateOnRefresh: true,
+        },
+      });
+
+      tl.from(reactRef.current, {
+        scale: initialScale,
+      }).to(reactRef.current, {
+        top: `${skillsPosition}px`,
+        scale: toScale,
+        ease: "power2.inOut",
+        duration: 3,
+      });
     };
 
-    initializeScroll();
-    updateAnimation();
+    const debounceUpdate = () => {
+      clearTimeout(window.updateTimeout);
+      window.updateTimeout = setTimeout(updateAnimation, 200);
+    };
 
-    window.addEventListener('resize', () => {
-      updateAnimation();
-      locoScroll.update();
-    });
+    updateAnimation();
+    window.addEventListener("resize", debounceUpdate);
+    ScrollTrigger.refresh();
 
     return () => {
-      if (locoScroll) locoScroll.destroy();
+      window.removeEventListener("resize", debounceUpdate);
       ScrollTrigger.killAll();
-      window.removeEventListener('resize', updateAnimation);
     };
-  }, [mainRef, reactRef, skillsRef]);
+  }, [mainRef, reactRef, skillsRef, ContactsRef]);
 };
-
 
 const App = () => {
   const mainRef = useRef(null);
@@ -114,7 +87,7 @@ const App = () => {
   const ContactsRef = useRef(null);
   const ProjectsRef = useRef(null);
 
-  useGSAPAnimation(mainRef, reactRef, skillsRef);
+  useGSAPAnimation(mainRef, reactRef, skillsRef,ContactsRef);
 
   const ScrollAbout = () => {
     AboutRef.current.scrollIntoView({ behavior: "smooth" });
@@ -169,11 +142,12 @@ const App = () => {
         <img
           style={{
             zIndex: 6,
+            // transition:"cub"
           }}
           ref={reactRef}
           src={react}
           alt="react.png"
-          className={`reactImg mix-blend-difference absolute left-[6rem] md:left-[20rem] lg:left-[27.7%] top-[1rem] md:top-0`}
+          className={`absolute left-[6rem] md:left-[20rem] lg:left-[27.7%] top-[1rem] md:top-0`}
         />
         <MainContent />
         <About ref={AboutRef} />

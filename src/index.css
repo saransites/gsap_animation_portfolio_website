@@ -24,9 +24,6 @@
   box-sizing: border-box;
   font-family: "poppins", Courier, monospace;
 }
-.pin-spacer {
-  width: 0 !important;
-}
 .textbg {
   background: -webkit-linear-gradient(var(--color-bg2), var(--color-bg1));
   -webkit-background-clip: text;
