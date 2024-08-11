@@ -63,7 +63,7 @@ const useGSAPAnimation = (mainRef, reactRef, skillsRef, ContactsRef) => {
         let tl = gsap.timeline({
           scrollTrigger: {
             trigger: mainRef.current,
-            start: "top top",
+            start: "50% 50%",
             end: `${skillsPosition}px`,
             scrub: 1,
             markers: false,
@@ -156,6 +156,8 @@ const App = () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
+
+  const smallScreen=window.innerWidth<=567
   return (
     <GlobalContext.Provider
       value={{ ScrollAbout, ScrollContacts, ScrollProjects, ScrollSkills }}
@@ -163,8 +165,7 @@ const App = () => {
       <div className="h-screen p-4 rounded" ref={mainRef}>
         <img
           style={{
-            zIndex: 6,
-            transition:"cubic-bezier("
+            zIndex:smallScreen ? 0 :2
           }}
           ref={reactRef}
           src={react}
