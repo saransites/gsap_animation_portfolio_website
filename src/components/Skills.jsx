@@ -41,7 +41,7 @@ const icons = [
 const Skills = forwardRef((props,ref) => {
   return (
     <div className="skills mb-12 relative" ref={ref}>
-      <ul className="max-w-full grid grid-cols-2 lg:grid-cols-7 place-items-center gap-4 pr-2 md:pr-0">
+      <ul className="max-w-full grid grid-cols-2 lg:grid-cols-7 place-items-center gap-4 pr-6 md:pr-0">
         {icons.map((icon, i) => (
           <li
             key={i}
