@@ -42,15 +42,15 @@ const useGSAPAnimation = (mainRef, reactRef, skillsRef, ContactsRef) => {
           initialScale = 0.635;
           toScale = 0.25;
         } else if (isMobile) {
-          adjustValue = -35;
+          adjustValue = 135;
           initialScale = 0.415;
           toScale = 0.215;
         } else if (isSmallMobile) {
-          adjustValue = 265;
+          adjustValue = 165;
           initialScale = 0.415;
           toScale = 0.215;
         } else if (isVerySmallMobile) {
-          adjustValue = -245;
+          adjustValue = 145;
           initialScale = 0.415;
           toScale = 0.215;
         }
