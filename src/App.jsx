@@ -44,7 +44,7 @@ const useGSAPAnimation = (mainRef, reactRef, skillsRef, ContactsRef) => {
         } else if (isMobile) {
           adjustValue = 190;
           initialScale = 0.415;
-          toScale = 0.215;
+          toScale = 0.2;
         } else if (isSmallMobile) {
           adjustValue = 165;
           initialScale = 0.415;
@@ -169,7 +169,7 @@ const App = () => {
           ref={reactRef}
           src={react}
           alt="react.png"
-          className={`absolute left-[6rem] md:left-[20rem] lg:left-[27.7%] top-[1rem] md:top-0`}
+          className={`absolute left-[6.15rem] md:left-[20rem] lg:left-[27.7%] top-[1rem] md:top-0`}
         />
         <MainContent />
         <About ref={AboutRef} />
