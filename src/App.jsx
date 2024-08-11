@@ -169,7 +169,7 @@ const App = () => {
           ref={reactRef}
           src={react}
           alt="react.png"
-          className={`absolute left-[6.35rem] md:left-[20rem] lg:left-[27.7%] top-[1rem] md:top-0`}
+          className={`absolute left-[6rem] sm:left-[6.6rem] md:left-[20rem] lg:left-[27.7%] top-[1rem] md:top-0`}
         />
         <MainContent />
         <About ref={AboutRef} />
