@@ -1,7 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 :root {
   font-family: "poppins", Courier, monospace,Arial, Helvetica, sans-serif;
@@ -24,6 +24,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "poppins", Courier, monospace,Arial, Helvetica, sans-serif;
 }
 .textbg {
   background: -webkit-linear-gradient(var(--color-bg2), var(--color-bg1));
