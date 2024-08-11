@@ -136,7 +136,7 @@ const App = () => {
           autoAlpha: 0.5,
           y: 100,
           x: -100,
-          rotate: 5,
+          rotate: 3,
         },
         {
           duration: 1.5,

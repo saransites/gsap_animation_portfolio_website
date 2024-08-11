@@ -1,7 +1,10 @@
-import React ,{forwardRef}from "react";
+import React, { forwardRef } from "react";
 import ecommerce from "../assets/Ecommerce page.jpeg";
 import portfolio from "../assets/Screenshot 2024-07-31 193602.png";
-import chat from '../assets/Screenshot 2024-08-10 150557.png'
+import chat from "../assets/Screenshot 2024-08-10 150557.png";
+import "./Projects.css";
+import { FaArrowsToEye } from "react-icons/fa6";
+import { MdOutlineArrowOutward } from "react-icons/md";
 
 const projects = [
   {
@@ -24,44 +27,36 @@ const projects = [
   },
 ];
 
-const Projects = forwardRef((props,ref) => {
+const Projects = forwardRef((props, ref) => {
   return (
-      <div ref={ref} className="projects grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center gap-4 my-4">
-        {projects.map((item, i) => (
-          <div
-            key={i}
-            className={`w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700`}
-          >
-            <a href={item.link} target="_blank" rel="noopener noreferrer">
-              <img
-                className="p-8 rounded-[40px] w-full h-60 object-cover"
-                src={item.image}
-                alt={item.title}
-              />
-            </a>
-            <div className="px-5 pb-5">
-              <a href={item.link} target="_blank" rel="noopener noreferrer">
-                <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                  {item.title}
-                </h5>
-              </a>
-              <p className="mt-2 text-gray-600 dark:text-gray-400">
-                {item.description}
-              </p>
-              <div className="flex items-center justify-end mt-4">
-                <a
-                  href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                  View
+    <div
+      ref={ref}
+      className="projects grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center gap-4 my-4"
+    >
+      {projects.map((item, i) => (
+        <div className="card">
+          <div className="card-inner">
+            <div className="box">
+              <div className="imgBox">
+                <img src={item.image} alt={item.title} />
+              </div>
+              <div className="icon">
+                <a href={item.link} className="iconBox group">
+                  {" "}
+                  <span className="font-bold">
+                    <MdOutlineArrowOutward className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-500"/>
+                  </span>
                 </a>
               </div>
             </div>
           </div>
-        ))}
-      </div>
+          <div className="content">
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 });
 
