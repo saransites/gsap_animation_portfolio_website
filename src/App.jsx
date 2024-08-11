@@ -63,7 +63,7 @@ const useGSAPAnimation = (mainRef, reactRef, skillsRef, ContactsRef) => {
         let tl = gsap.timeline({
           scrollTrigger: {
             trigger: mainRef.current,
-            start: "50% 90%",
+            start: "top top",
             end: `${skillsPosition}px`,
             scrub: 1,
             markers: false,
@@ -164,7 +164,7 @@ const App = () => {
         <img
           style={{
             zIndex: 6,
-            // transition:"cub"
+            transition:"cubic-bezier("
           }}
           ref={reactRef}
           src={react}
