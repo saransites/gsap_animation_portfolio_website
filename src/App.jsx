@@ -42,7 +42,7 @@ const useGSAPAnimation = (mainRef, reactRef, skillsRef, ContactsRef) => {
           initialScale = 0.635;
           toScale = 0.25;
         } else if (isMobile) {
-          adjustValue = 190;
+          adjustValue = 260;
           initialScale = 0.415;
           toScale = 0.2;
         } else if (isSmallMobile) {
@@ -128,28 +128,25 @@ const App = () => {
       AboutRef.current,
       ProjectsRef.current,
       skillsRef.current,
+      ContactsRef.current
     ]);
     sections.forEach((section, i) => {
       const animate = gsap.fromTo(
         section,
         {
-          autoAlpha: 0.5,
-          y: 100,
-          x: -100,
-          rotate: 3,
+          autoAlpha: 0.4,
+          y: 150,
         },
         {
           duration: 1.5,
           autoAlpha: 1,
-          x: 0,
           y: 0,
-          rotate: 0,
         }
       );
       ScrollTrigger.create({
         trigger: section,
         animation: animate,
-        scrub: true,
+        scrub: 3,
       });
     });
     return () => {
@@ -157,7 +154,6 @@ const App = () => {
     };
   }, []);
 
-  const smallScreen=window.innerWidth<=567
   return (
     <GlobalContext.Provider
       value={{ ScrollAbout, ScrollContacts, ScrollProjects, ScrollSkills }}
@@ -165,7 +161,7 @@ const App = () => {
       <div className="h-screen p-4 rounded" ref={mainRef}>
         <img
           style={{
-            zIndex:smallScreen ? 0 :2
+            zIndex:2
           }}
           ref={reactRef}
           src={react}

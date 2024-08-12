@@ -44,7 +44,7 @@ const Projects = forwardRef((props, ref) => {
                 <a href={item.link} className="iconBox group">
                   {" "}
                   <span className="font-bold">
-                    <MdOutlineArrowOutward className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-500"/>
+                    <MdOutlineArrowOutward className="text-lg sm:text-xl md:text-2xl group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-500"/>
                   </span>
                 </a>
               </div>
