@@ -134,8 +134,8 @@ const App = () => {
       const animate = gsap.fromTo(
         section,
         {
-          autoAlpha: 0.4,
-          y: 150,
+          autoAlpha: 0.7,
+          y: 90,
         },
         {
           duration: 1.5,

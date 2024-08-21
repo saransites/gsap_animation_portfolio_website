@@ -81,15 +81,15 @@ const Mainbackground = () => {
           </h1>
         </div>
         {/* contact us */}
-        <div style={{ zIndex: 786 }} className="group absolute right-0 rounded-bl-[60px] top-0 bg-[var(--shapebg)] pt-3 pb-4 px-4">
+        <div style={{ zIndex: 786 }} className="group absolute right-0 rounded-bl-[35px] top-0 bg-[var(--shapebg)] pl-2 pb-2 min-w-[11%]">
           <button
             onClick={ScrollContacts}
-            className="hidden round contact text-black border-2 md:flex justify-between items-center gap-1 border-[#278282] hover:bg-slate-100 transition p-2 rounded-full px-6"
+            className="hidden round contact text-black border-2 md:flex justify-between items-center gap-1 hover:bg-[#0c0160] transition-all p-1.5 rounded-full px-4"
           >
             <span className="group-hover:-translate-x-1 transition-transform duration-500">
               Contact Us
             </span>
-            <FaArrowRight className="group-hover:bg-[#278282] group-hover:text-white transition-ml duration-500 text-4xl border-2 border-[#278282] rounded-full p-2" />
+            <FaArrowRight className="group-hover:bg-[#8500d3] group-hover:text-white transition-ml duration-500 text-4xl bg-[#fff] text-black rounded-full p-2.5" />
           </button>
           <div className="md:hidden round menu">
             <MobSidebar />
@@ -113,26 +113,18 @@ const Mainbackground = () => {
             </filter>
           </defs>
         </svg>
-        {/* <div className="gradients-container">
-          <div className="g1"></div>
-          <div className="g2"></div>
-          <div className="g3"></div>
-          <div className="g4"></div>
-          <div className="g5"></div>
-          <div ref={interActiveRef} className="interactive"></div>
-        </div> */}
         {/* below curve button */}
         <div
           style={{ zIndex: 1 }}
-          className="absolute -left-6 rounded-tr-[65px] -bottom-2 bg-[var(--shapebg)] py-3 px-6 w-3/2 md:w-[35rem]"
+          className="absolute -left-6 rounded-tr-[35px] -bottom-2 bg-[var(--shapebg)] py-[0.55rem] mx-6 pr-2 w-3/2 md:w-[35rem]"
         >
           <a
             href="../../saran_full-stack_resume.pdf"
             download="saraResume.pdf"
-            className="group round resume text-black border-2 border-[#278282] hover:bg-slate-200 transition w-full p-2 rounded-full px-6 flex justify-center items-center gap-2"
+            className="group round resume text-black hover:bg-slate-200 transition w-full p-2 rounded-full px-6 flex justify-center items-center gap-2"
           >
             <span>Get My Resume...</span>
-            <FaArrowDown className="group-hover:bg-[#278282] text-black group-hover:text-white group-hover:ml-2 transition-ml duration-500 text-4xl border-2 border-[#278282] rounded-full p-2" />
+            <FaArrowDown className="group-hover:bg-[#2a2a2a] bg-[#fff] text-black group-hover:text-white group-hover:ml-2 transition-ml duration-500 text-4xl rounded-full p-2.5" />
           </a>
         </div>
       </div>

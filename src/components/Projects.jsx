@@ -1,9 +1,8 @@
 import React, { forwardRef } from "react";
 import ecommerce from "../assets/Ecommerce page.jpeg";
 import portfolio from "../assets/Screenshot 2024-07-31 193602.png";
-import chat from "../assets/Screenshot 2024-08-10 150557.png";
+import chat from "../assets/chat_app.png";
 import "./Projects.css";
-import { FaArrowsToEye } from "react-icons/fa6";
 import { MdOutlineArrowOutward } from "react-icons/md";
 
 const projects = [
