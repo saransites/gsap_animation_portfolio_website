@@ -4,10 +4,7 @@ import Mainbackground from "./Mainbackground";
 
 const MainContent = () => {
   return (
-    <main className="h-full grid grid-cols-1 sm:grid-cols-[110px_2fr]">
-      <div className="hidden sm:block">
-        <Sidebar />
-      </div>
+    <main className="h-full">
       <div className="gradient-bg">
         <Mainbackground />
       </div>

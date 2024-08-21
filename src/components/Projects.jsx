@@ -33,17 +33,17 @@ const Projects = forwardRef((props, ref) => {
       className="projects grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center gap-4 my-4"
     >
       {projects.map((item, i) => (
-        <div className="card">
+        <div className="card group">
           <div className="card-inner">
             <div className="box">
               <div className="imgBox">
                 <img src={item.image} alt={item.title} />
               </div>
               <div className="icon">
-                <a href={item.link} className="iconBox group">
+                <a href={item.link} className="iconBox">
                   {" "}
                   <span className="font-bold">
-                    <MdOutlineArrowOutward className="text-lg sm:text-xl md:text-2xl group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-500"/>
+                    <MdOutlineArrowOutward className="text-lg sm:text-xl md:text-2xl group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:scale-150 transition-transform duration-500"/>
                   </span>
                 </a>
               </div>
