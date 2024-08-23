@@ -32,10 +32,16 @@ body{
   backdrop-filter: blur(50px);
 }
 main{
-  background: linear-gradient(rgba(107, 137, 202, 0.247),rgba(68, 67, 67, 0.006)),url('./assets/tiago-alexandre-lopes-W4CTDtL2LQo-unsplash.jpg');
-  background-size: cover;
+  background: linear-gradient(rgba(107, 137, 202, 0.247),rgba(107, 137, 202, 0.07)),url('./assets/tiago-alexandre-lopes-W4CTDtL2LQo-unsplash.jpg')no-repeat;
   background-position: center;
-  background-repeat: no-repeat;
+  background-size: cover;
+}
+@media screen and (max-width:567px) {
+  main{
+    background: linear-gradient(rgba(107, 137, 202, 0.247),rgba(107, 137, 202, 0.347)),url('./assets/tiago-alexandre-lopes-W4CTDtL2LQo-unsplash.jpg')no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
 }
 .round {
   position: relative;
