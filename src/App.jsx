@@ -73,11 +73,13 @@ const useGSAPAnimation = (mainRef, reactRef, skillsRef, ContactsRef) => {
 
         tl.from(reactRef.current, {
           scale: initialScale,
+          opacity:0.65,
         }).to(reactRef.current, {
           top: `${skillsPosition}px`,
           scale: toScale,
           ease: "power2.inOut",
           duration: 3,
+          opacity:1,
         });
 
         return () => {
@@ -134,8 +136,8 @@ const App = () => {
       const animate = gsap.fromTo(
         section,
         {
-          autoAlpha: 0.7,
-          y: 90,
+          autoAlpha: 0.45,
+          y: 160,
         },
         {
           duration: 1.5,
@@ -146,7 +148,7 @@ const App = () => {
       ScrollTrigger.create({
         trigger: section,
         animation: animate,
-        scrub: 3,
+        scrub: 5,
       });
     });
     return () => {

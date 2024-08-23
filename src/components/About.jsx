@@ -12,11 +12,11 @@ const About = forwardRef((props, ref) => {
             src={hero}
           ></img>
         </div>
-        <div className="flex flex-col md:text-left items-center text-center">
-          <h1 className="font-bold tracking-wider sm:text-3xl text-3xl mb-4 text-gray-900">
+        <div className="flex flex-col md:text-left items-center">
+          <h1 className="font-semibold tracking-wider sm:text-3xl text-3xl mb-4 text-[var(--heading)]">
             I'm a MERN Stack Developer
           </h1>
-          <p className="text-sm text-justify leading-2 md:leading-6">
+          <p className="text-sm text-justify text-[var(--content)] leading-2 md:leading-6">
             Hello! I am a passionate MERN stack developer with a strong
             background in creating dynamic and responsive web applications. My
             expertise lies in developing full-stack applications using MongoDB,

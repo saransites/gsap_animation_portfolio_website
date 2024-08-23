@@ -4,7 +4,7 @@ import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 const Sidebar = () => {
 
   return (
-    <div style={{zIndex:9}} className="round follow shadow-[0_0_0_0.5rem_#e8e9f3] absolute text-white bg-gradient-to-tr from-[#62009a] to-[#170d63] w-28 p-4 rounded-[1.5rem] flex justify-between items-center">
+    <div style={{zIndex:145}} className="round follow shadow-[0_0_0_0.5rem_var(--shapebg)] absolute text-white backdrop-blur w-28 p-4 rounded-[1.5rem] flex justify-between items-center">
       <div className="w-full">
         <h1 className="follow tracking-looser mb-2 text-xl font-bold text-center">
           FOLLOW
