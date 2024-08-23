@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, createContext, useState } from "react";
-import MainContent from "./components/MainContent";
 import About from "./components/About";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
@@ -7,6 +6,7 @@ import Contacts from "./components/Contacts";
 import react from "./assets/react.png";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import Mainbackground from "./components/Mainbackground";
 
 const GlobalContext = createContext();
 
@@ -168,7 +168,7 @@ const App = () => {
           alt="react.png"
           className={`absolute left-[6rem] sm:left-[6.6rem] md:left-[20rem] lg:left-[27.7%] top-[1rem] md:top-0`}
         />
-        <MainContent />
+        <Mainbackground />
         <About ref={AboutRef} />
         <Projects ref={ProjectsRef} />
         <Skills ref={skillsRef} />

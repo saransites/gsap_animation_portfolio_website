@@ -9,7 +9,7 @@ const Mainbackground = () => {
   const { ScrollAbout, ScrollContacts, ScrollProjects } =
     useContext(GlobalContext);
   return (
-    <div>
+    <main className="gradient-bg text-white">
       <header
         style={{ zIndex: 786 }}
         className="absolute w-full hidden p-2 md:block"
@@ -92,7 +92,7 @@ const Mainbackground = () => {
           <FaArrowDown className="arrow group-hover:bg-[#2a2a2a] bg-[#fff] text-black group-hover:text-white group-hover:ml-2 transition-all duration-500 text-4xl rounded-full p-2.5" />
         </a>
       </div>
-    </div>
+    </main>
   );
 };
 
