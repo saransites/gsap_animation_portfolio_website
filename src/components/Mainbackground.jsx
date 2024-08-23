@@ -10,7 +10,7 @@ const Mainbackground = () => {
   const { ScrollContacts } = useContext(GlobalContext);
   return (
     <main
-      className="w-full h-[100dvh] text-white relative overflow-hidden rounded-[1.7rem_0_1.7rem_0]"
+      className="w-full h-[100vh] text-white relative overflow-hidden rounded-[1.7rem_0_1.7rem_0]"
     >
       <Header />
       <Sidebar />
