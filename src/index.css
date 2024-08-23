@@ -89,13 +89,13 @@ main{
   box-shadow: 5.59px -5.59px 0 5px var(--shapebg);
 }
 .round.menu::before {
-  right: 4.5rem;
+  right: 4.48rem;
   border-top-right-radius: 55px;
   box-shadow: 6px -6px 0 5px var(--shapebg);
 }
 .round.menu::after {
   right: -0.03px;
-  top: 3.3rem;
+  top: 3.28rem;
   border-top-right-radius: 52px;
   box-shadow: 6px -6px 0 5px var(--shapebg);
 }
