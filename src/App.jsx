@@ -34,7 +34,7 @@ const useGSAPAnimation = (mainRef, reactRef, skillsRef, ContactsRef) => {
 
         // Determine adjustValue, initialScale, and toScale based on screen size
         if (isDesktop) {
-          adjustValue = 355;
+          adjustValue = 345;
           initialScale = 0.635;
           toScale = 0.25;
         } else if (isTablet) {
