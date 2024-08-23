@@ -38,7 +38,7 @@ main{
 }
 @media screen and (max-width:567px) {
   main{
-    background: linear-gradient(rgba(107, 137, 202, 0.247),rgba(107, 137, 202, 0.347)),url('./assets/tiago-alexandre-lopes-W4CTDtL2LQo-unsplash.jpg')no-repeat;
+    background: linear-gradient(rgba(107, 137, 202, 0.247),rgba(107, 137, 202, 0.247)),url('./assets/tiago-alexandre-lopes-W4CTDtL2LQo-unsplash.jpg')no-repeat;
     background-position: center;
     background-size: cover;
   }
