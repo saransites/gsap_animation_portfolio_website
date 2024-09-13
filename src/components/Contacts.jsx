@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useRef, useState } from "react";
 
 const Contacts = forwardRef((props, ref) => {
   return (
@@ -10,8 +10,11 @@ const Contacts = forwardRef((props, ref) => {
         Let's Make Something Better Together...
       </h1>
       <div>
-        <div className="">
-          <label className="text-[var(--heading)] [font-size:clamp(0.7rem,3vw,1rem)] mb-2 block" htmlFor="email">
+        <div>
+          <label
+            className="text-[var(--heading)] [font-size:clamp(0.7rem,3vw,1rem)] mb-2 block"
+            htmlFor="email"
+          >
             Email
           </label>
           <input
@@ -23,7 +26,10 @@ const Contacts = forwardRef((props, ref) => {
           ></input>
         </div>
         <div className="">
-          <label htmlFor="textarea" className="[font-size:clamp(0.7rem,3vw,1rem)] block my-2 text-[var(--heading)]">
+          <label
+            htmlFor="textarea"
+            className="[font-size:clamp(0.7rem,3vw,1rem)] block my-2 text-[var(--heading)]"
+          >
             Message
           </label>
           <textarea

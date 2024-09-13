@@ -95,12 +95,12 @@
           position: absolute;
           content: "";
           bottom: 0.38rem;
-          left: -1.28rem;
+          left: -1.25rem;
           background: transparent;
           width: 1.25rem;
           height: 1.25rem;
           border-bottom-right-radius: 1.25rem;
-          box-shadow: 0.313rem 0.313rem 0 0.313rem var(--shape-bg);
+          box-shadow: 0.35rem 0.4rem 0 0.313rem var(--shape-bg);
         }
 
         &::after {
@@ -112,7 +112,7 @@
           width: 1.25rem;
           height: 1.25rem;
           border-bottom-right-radius: 1.25rem;
-          box-shadow: 0.313rem 0.313rem 0 0.313rem var(--shape-bg);
+          box-shadow: 0.4rem 0.4rem 0 0.313rem var(--shape-bg);
         }
 
         .iconBox {
