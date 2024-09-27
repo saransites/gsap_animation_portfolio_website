@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import ecommerce from "../assets/Ecommerce page.jpeg";
+import ecommerce from "../assets/Ecommerce page.png";
 import portfolio from "../assets/Screenshot 2024-07-31 193602.png";
 import chat from "../assets/chat_app.png";
 import "./Projects.css";
@@ -8,7 +8,7 @@ import { MdOutlineArrowOutward } from "react-icons/md";
 const projects = [
   {
     image: ecommerce,
-    link: "https://mern-ecommerce-web-theta.vercel.app/",
+    link: "https://mern-ecommerce-website-nu.vercel.app/",
     title: "MERN E-Commerce Website",
     description: "This is my ecommerce app",
   },

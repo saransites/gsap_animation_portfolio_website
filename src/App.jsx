@@ -12,7 +12,7 @@ const GlobalContext = createContext();
 
 gsap.registerPlugin(ScrollTrigger);
 
-const useGSAPAnimation = (mainRef, reactRef, skillsRef, ContactsRef) => {
+const useGSAPAnimation = (mainRef, reactRef, skillsRef, contactsRef) => {
   useEffect(() => {
     let mm = gsap.matchMedia(); // Initialize matchMedia
 
@@ -25,8 +25,7 @@ const useGSAPAnimation = (mainRef, reactRef, skillsRef, ContactsRef) => {
         isVerySmallMobile: "(max-width: 390px)",
       },
       (context) => {
-        let { isDesktop, isTablet, isMobile, isSmallMobile, isVerySmallMobile } =
-          context.conditions;
+        let { isDesktop, isTablet, isMobile, isSmallMobile, isVerySmallMobile } = context.conditions;
 
         let adjustValue;
         let initialScale;
@@ -42,7 +41,7 @@ const useGSAPAnimation = (mainRef, reactRef, skillsRef, ContactsRef) => {
           initialScale = 0.635;
           toScale = 0.25;
         } else if (isMobile) {
-          adjustValue = 188;//198 up to down
+          adjustValue = 188; // 198 up to down
           initialScale = 0.415;
           toScale = 0.2;
         } else if (isSmallMobile) {
@@ -55,31 +54,32 @@ const useGSAPAnimation = (mainRef, reactRef, skillsRef, ContactsRef) => {
           toScale = 0.215;
         }
 
-        const skillsPosition =
-          ContactsRef.current.getBoundingClientRect().top +
-          window.scrollY -
-          adjustValue;
+        // Calculate exact skillsPosition based on element's position in relation to the viewport
+        const skillsPosition = skillsRef.current.getBoundingClientRect().top + window.scrollY;
+
+        const contactPosition = contactsRef.current.getBoundingClientRect().top + window.scrollY;
 
         let tl = gsap.timeline({
           scrollTrigger: {
             trigger: mainRef.current,
-            start: "50% 50%",
-            end: `${skillsPosition}px`,
+            start: "50% 50%", // start when the main section is in the center
+            end: `${contactPosition}px`, // set end at the contacts section
             scrub: 1,
             markers: false,
             invalidateOnRefresh: true,
           },
         });
 
+        // Animate reactRef element
         tl.from(reactRef.current, {
           scale: initialScale,
-          opacity:0.65,
+          opacity: 0.65,
         }).to(reactRef.current, {
-          top: `${skillsPosition}px`,
+          top: `${skillsPosition - adjustValue}px`, // Adjust the top position based on the skillRef's position
           scale: toScale,
           ease: "power2.inOut",
           duration: 3,
-          opacity:1,
+          opacity: 1,
         });
 
         return () => {
@@ -91,7 +91,7 @@ const useGSAPAnimation = (mainRef, reactRef, skillsRef, ContactsRef) => {
     const debounceUpdate = () => {
       clearTimeout(window.updateTimeout);
       window.updateTimeout = setTimeout(() => {
-        ScrollTrigger.refresh();
+        ScrollTrigger.refresh(); // Refresh ScrollTrigger to recalculate positions
       }, 200);
     };
 
@@ -101,8 +101,9 @@ const useGSAPAnimation = (mainRef, reactRef, skillsRef, ContactsRef) => {
       window.removeEventListener("resize", debounceUpdate);
       mm.revert(); // Revert matchMedia settings on cleanup
     };
-  }, [mainRef, reactRef, skillsRef, ContactsRef]);
-}
+  }, [mainRef, reactRef, skillsRef, contactsRef]);
+};
+
 const App = () => {
   const mainRef = useRef(null);
   const reactRef = useRef(null);
