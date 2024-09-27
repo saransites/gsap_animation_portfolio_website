@@ -21,8 +21,8 @@ const icons = [
     alt: "Javascript",
   },
   {
-    icon: "",
-    alt: "",
+    icon: react,
+    alt: "react",
   },
   {
     icon: node,
