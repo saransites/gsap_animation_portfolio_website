@@ -15,7 +15,7 @@ const Mainbackground = () => {
           loop
           autoPlay
           muted
-          className="absolute right-0 w-full h-full object-cover rotate-0"
+          className="absolute right-0 w-full h-full object-cover"
         >
           <source src={video} type="video/mp4" />
         </video>
