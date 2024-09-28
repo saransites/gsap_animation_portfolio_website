@@ -5,20 +5,21 @@ import MobSidebar from "./MobSidebar";
 import { FaArrowRight } from "react-icons/fa6";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
+import logo from "../assets/profile without bg.png";
 import video from "../assets/Abstract dark blue background.mp4";
 
 const Mainbackground = () => {
   const { ScrollContacts } = useContext(GlobalContext);
   return (
     <main className="w-full h-[100vh] text-white relative overflow-hidden rounded-[1.7rem_0_1.7rem_0]">
-        <video
-          loop
-          autoPlay
-          muted
-          className="absolute right-0 w-full h-full object-cover"
-        >
-          <source src={video} type="video/mp4" />
-        </video>
+      <video
+        loop
+        autoPlay
+        muted
+        className="absolute right-0 w-full h-full object-cover"
+      >
+        <source src={video} type="video/mp4" />
+      </video>
       <Header />
       <Sidebar />
       {/* contact us */}
@@ -39,6 +40,7 @@ const Mainbackground = () => {
           <MobSidebar />
         </div>
       </div>
+      <CircleAnimation />
       {/* below curve button */}
       <div
         style={{ zIndex: 1 }}
@@ -46,7 +48,7 @@ const Mainbackground = () => {
       >
         <a
           href="../../saran_full-stack_resume.pdf"
-          download="saraResume.pdf"
+          download="saranResume.pdf"
           className="group round resume text-black hover:bg-slate-200 transition w-full p-2 rounded-full px-6 flex justify-center items-center gap-2"
         >
           <span>Get My Resume</span>
@@ -58,3 +60,32 @@ const Mainbackground = () => {
 };
 
 export default Mainbackground;
+
+const CircleAnimation = () => {
+  const textRef = useRef();
+
+  useEffect(() => {
+    const text = textRef.current.innerText;
+
+    textRef.current.innerHTML = text
+      .split("")
+      .map((letter, index) => {
+        return `<span style="transform: rotate(${
+          index * 6.4
+        }deg);">${letter}</span>`;
+      })
+      .join("");
+  }, []);
+
+  return (
+    <div className="absolute right-1 bottom-10 md:right-4 md:bottom-4 w-[200px] h-[200px] rounded-full flex justify-center items-center ring ring-slate-400 bg-slate-900 overflow-hidden">
+      <div
+        style={{ background: `linear-gradient(to top,rgba(0,0,0,0.9),transparent 50%),url(${logo})no-repeat center/70% 100%` }}
+        className="absolute inset-0 w-full brightness-110 contrast-[1.1]"
+      ></div>
+      <div ref={textRef} className="circle-text">
+        @Saran~Web Developer~Youtuber
+      </div>
+    </div>
+  );
+};

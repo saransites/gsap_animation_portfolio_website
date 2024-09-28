@@ -213,3 +213,29 @@ header ul li:nth-child(3) {
     transform: translateX(-50%) translateY(-10%);
   }
 }
+
+.circle-text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: rotate-text 35s linear infinite reverse;
+}
+
+.circle-text span {
+  position: absolute;
+  left: 50%;
+  transform-origin: 0 100px; /* Adjust this based on the circle's radius */
+  font-size: clamp(0.7rem,1.5vw,1.1rem);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Keyframes to rotate the entire text circle */
+@keyframes rotate-text {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
