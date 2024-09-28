@@ -66,12 +66,15 @@ const CircleAnimation = () => {
 
   useEffect(() => {
     const text = textRef.current.innerText;
+    const totalLetters = text.length;
+
+    // Dynamically calculate the angle per letter based on the total number of letters
+    const anglePerLetter = 360 / totalLetters;
 
     textRef.current.innerHTML = text
       .split("")
       .map((letter, index) => {
-        // Treat spaces as non-visible characters but still account for their position
-        return `<span style="transform: rotate(${index * 6.4}deg); display: inline-block;">${
+        return `<span style="transform: rotate(${index * anglePerLetter}deg); display: inline-block;">${
           letter === " " ? "&nbsp;" : letter
         }</span>`;
       })
