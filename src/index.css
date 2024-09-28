@@ -31,13 +31,6 @@ body{
   background:url('./assets/tiago-alexandre-lopes-W4CTDtL2LQo-unsplash.jpg');
   backdrop-filter: blur(50px);
 }
-@media screen and (max-width:567px) {
-  main{
-    background: linear-gradient(rgba(107, 137, 202, 0.247),rgba(107, 137, 202, 0.247)),url('./assets/tiago-alexandre-lopes-W4CTDtL2LQo-unsplash.jpg')no-repeat;
-    background-position: center;
-    background-size: cover;
-  }
-}
 .round {
   position: relative;
   letter-spacing: 0.03rem;
@@ -225,7 +218,7 @@ header ul li:nth-child(3) {
   position: absolute;
   left: 50%;
   transform-origin: 0 100px; /* Adjust this based on the circle's radius */
-  font-size: clamp(0.7rem,1.5vw,1.1rem);
+  font-size: 1.1rem;
   font-family: 'Courier New', Courier, monospace;
 }
 

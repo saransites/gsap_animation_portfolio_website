@@ -78,7 +78,7 @@ const CircleAnimation = () => {
   }, []);
 
   return (
-    <div className="absolute right-1 bottom-10 md:right-4 md:bottom-4 w-[200px] h-[200px] rounded-full flex justify-center items-center ring ring-slate-400 bg-slate-900 overflow-hidden">
+    <div className="absolute right-1 bottom-10 md:right-2 md:bottom-2 w-[200px] h-[200px] rounded-full flex justify-center items-center ring-0 ring-slate-100 shadow-[0_0_10px_#fefefe] bg-slate-900 overflow-hidden">
       <div
         style={{ background: `linear-gradient(to top,rgba(0,0,0,0.9),transparent 50%),url(${logo})no-repeat center/70% 100%` }}
         className="absolute inset-0 w-full brightness-110 contrast-[1.1]"

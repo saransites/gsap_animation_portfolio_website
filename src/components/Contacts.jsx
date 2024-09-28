@@ -18,7 +18,7 @@ const Contacts = forwardRef((props, ref) => {
             Email
           </label>
           <input
-            className="border block w-full border-[#414141] px-4 py-2 rounded-md bg-transparent focus:border-none focus:outline-none"
+            className="border block w-full text-[#fefefe] border-[#414141] px-4 py-2 rounded-md bg-transparent focus:border-none focus:outline-none"
             required
             name="email"
             id="email"
@@ -33,7 +33,7 @@ const Contacts = forwardRef((props, ref) => {
             Message
           </label>
           <textarea
-            className="block w-full bg-transparent focus:border-none focus:outline-none border border-[#414141] px-4 py-2 rounded-md"
+            className="block w-full bg-transparent text-[#fefefe] focus:border-none focus:outline-none border border-[#414141] px-4 py-2 rounded-md"
             required
             cols="50"
             rows="10"
