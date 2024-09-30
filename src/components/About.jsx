@@ -1,34 +1,101 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState } from "react";
 import hero from "../assets/portrait-boy-with-brown-hair-brown-eyes.png";
-
+import { Card, CardContent } from "./ui/card";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Heart,
+  Coffee,
+  Music,
+  Code,
+  Film,
+} from "lucide-react";
+const interests = [
+  {
+    icon: <Heart className="w-6 h-6" />,
+    label: "Passion for Design",
+    description: "I love creating beautiful and functional user interfaces.",
+  },
+  {
+    icon: <Coffee className="w-6 h-6" />,
+    label: "Coffee Enthusiast",
+    description: "Fueling my coding sessions with the perfect brew.",
+  },
+  {
+    icon: <Music className="w-6 h-6" />,
+    label: "Music Lover",
+    description: "Always coding with a curated playlist in the background.",
+  },
+  {
+    icon: <Code className="w-6 h-6" />,
+    label: "Continuous Learner",
+    description: "Always excited to learn new technologies and techniques.",
+  },
+  {
+    icon: <Film className="w-6 h-6" />,
+    label: "Editing",
+    description:
+      "creatively express ideas through visual storytelling.",
+  },
+];
 const About = forwardRef((props, ref) => {
+  const [activeInterest, setActiveInterest] = useState(null);
   return (
-    <section ref={ref} className="animate text-gray-600 body-font mt-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 px-5 py-2 place-items-center">
+    <section
+      ref={ref}
+      className="animate p-8 relative overflow-hidden rounded-lg"
+    >
+      <div className="max-w-4xl mx-auto">
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-600 to-[#050a34] blur-3xl" />
+        <Card className="bg-gray-100 backdrop-blur-sm overflow-hidden">
+          <CardContent className="p-6">
+            <div className="flex flex-col justify-center md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
+              <Avatar className="w-32 h-32 border-4 border-[var(--shapebg)]">
+                <AvatarImage
+                  src={hero}
+                  alt="saran"
+                  className="object-contain mt-1"
+                />
+                <AvatarFallback>SM</AvatarFallback>
+              </Avatar>
+              <div className="text-center md:text-left">
+                <h2 className="text-3xl font-bold mb-2">SARAN</h2>
+                <p className="text-[var(--shapebg)] font-semibold text-lg mb-4">
+                  MERN stack Developer & Youtuber
+                </p>
+                <p className="text-gray-600 leading-relaxed">
+                  Hello! I'm Saran, a passionate MERN stack Developer with a
+                  keen eye for design and a love for creating seamless user
+                  experiences. When I'm not crafting pixel-perfect interfaces,
+                  you can find me exploring new coffee shops, attending tech
+                  meetups, or capturing moments through my camera lens.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
         <div>
-          <img
-            className="max-w-[15rem] object-cover object-center"
-            alt="hero"
-            src={hero}
-          ></img>
-        </div>
-        <div className="flex flex-col md:text-left items-center">
-          <h1 className="font-semibold tracking-wider sm:text-3xl text-3xl mb-4 text-[var(--heading)]">
-            I'm a MERN Stack Developer
-          </h1>
-          <p className="text-sm text-justify text-[var(--content)] leading-2 md:leading-6">
-            Hello! I am a passionate MERN stack developer with a strong
-            background in creating dynamic and responsive web applications. My
-            expertise lies in developing full-stack applications using MongoDB,
-            Express.js, React,MySQL and Node.js. I thrive in collaborative
-            environments and enjoy working closely with teams to achieve project
-            goals. I am constantly learning and staying updated with the latest
-            technologies to ensure that my work remains cutting-edge and
-            effective. When I'm not coding, I enjoy exploring new technologies,
-            participating in coding challenges, and contributing to open-source
-            projects. I am excited about the opportunities to apply my skills
-            and contribute to impactful projects in the tech industry.
-          </p>
+          <h2 className="text-2xl font-semibold mb-4 text-teal-800 text-center">
+            What Drives Me
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {interests.map((interest, index) => (
+              <div key={interest.label}>
+                <Card className="bg-white/90 backdrop-blur-lg">
+                  <CardContent className="p-4 flex flex-col items-start">
+                    <span className="text-teal-600">{interest.icon}</span>
+                    <h3 className="font-semibold mb-2 self-center">
+                      {interest.label}
+                    </h3>
+                    <p className="text-sm text-center text-gray-600">
+                      {interest.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

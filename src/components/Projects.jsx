@@ -39,7 +39,7 @@ const Projects = forwardRef((props, ref) => {
               <div className="imgBox">
                 <img src={item.image} alt={item.title} />
               </div>
-              <div className="icon bg-[#030724]">
+              <div className="icon bg-[var(--shape-bg)]">
                 <a href={item.link} className="iconBox">
                   {" "}
                   <span className="font-bold">

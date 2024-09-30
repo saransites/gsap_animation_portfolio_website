@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef,useRef,useEffect } from "react";
 import html from "../assets/html.png";
 import css from "../assets/css.png";
 import javascript from "../assets/javascript.png";
@@ -6,56 +6,72 @@ import react from "../assets/react.png";
 import node from "../assets/nodejs.png";
 import mongodb from "../assets/mongo-db.png";
 import mysql from "../assets/pngwing.com.png";
+import { Card } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger)
 
-const icons = [
+const skills = [
   {
     icon: html,
+    level:"Advanced",
     alt: "Html",
   },
   {
     icon: css,
+    level:"Advanced",
     alt: "Css",
   },
   {
     icon: javascript,
+    level:"Advanced",
     alt: "Javascript",
   },
   {
     icon: react,
+    level:"Advanced",
     alt: "react",
   },
   {
     icon: node,
+    level:"Intermediate",
     alt: "Nodejs",
   },
   {
     icon: mongodb,
+    level:"Intermediate",
     alt: "Mongodb",
   },
   {
     icon: mysql,
+    level:"Intermediate",
     alt: "MySQL",
   },
 ];
 
-const Skills = forwardRef((props,ref) => {
+const Skills=forwardRef((props, ref) => {
   return (
-    <div className="skills mb-12 relative" ref={ref}>
-      <ul className="max-w-full grid grid-cols-2 lg:grid-cols-7 place-items-center gap-4 pr-6 md:pr-0">
-        {icons.map((icon, i) => (
-          <li
-            key={i}
-            style={{
-              backgroundImage: `url(${icon.icon})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-            className="w-24 h-24 md:w-32 md:h-32"
-          ></li>
-        ))}
-      </ul>
-    </div>
-  );
-});
+    <section ref={ref} className="rounded-lg py-12 bg-[#131636f7]">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {skills.map((skill, index) => (
+            <Card 
+              key={index}
+              className="p-4 flex flex-col items-center justify-center bg-gray-700 border-gray-700 hover:border-primary transition-colors duration-300"
+            >
+              <img src={skill.icon} className="w-20 mb-2"/>
+              {/* <h3 className="text-xl font-semibold mb-2 text-white">{skill.name}</h3> */}
+              <Badge variant="outline" className="bg-primary text-primary-foreground">
+                {skill.level}
+              </Badge>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+})
 
-export default Skills;
+export default Skills

@@ -39,7 +39,6 @@ const App = () => {
       const animate = gsap.fromTo(
         section,
         {
-          autoAlpha: 0.45,
           y: 160,
         },
         {

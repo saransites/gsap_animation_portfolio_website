@@ -6,20 +6,11 @@ import { FaArrowRight } from "react-icons/fa6";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import logo from "../assets/profile without bg.png";
-import video from "../assets/Abstract dark blue background.mp4";
 
 const Mainbackground = () => {
   const { ScrollContacts } = useContext(GlobalContext);
   return (
     <main className="w-full h-[100vh] text-white relative overflow-hidden rounded-[1.7rem_0_1.7rem_0]">
-      <video
-        loop
-        autoPlay
-        muted
-        className="absolute right-0 w-full h-full object-cover"
-      >
-        <source src={video} type="video/mp4" />
-      </video>
       <Header />
       <Sidebar />
       {/* contact us */}
@@ -78,7 +69,7 @@ const CircleAnimation = () => {
           letter === " " ? "&nbsp;" : letter
         }</span>`;
       })
-      .join("");
+      .join("")
   }, []);
 
   return (

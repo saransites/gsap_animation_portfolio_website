@@ -1,51 +1,120 @@
-import React, { forwardRef, useRef, useState } from "react";
+import { forwardRef, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent } from "@/components/ui/card";
+import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 
 const Contacts = forwardRef((props, ref) => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission logic here
+    setIsSubmitted(true);
+    setTimeout(() => {
+      setIsSubmitted(false);
+    }, 3000);
+  };
+
   return (
-    <footer
+    <div
       ref={ref}
-      className="animate grid grid-cols-1 lg:grid-cols-2 bg-gradient-to-t from-[#252526] to-[#0a022b] rounded-lg p-4"
+      className="bg-gradient-to-r my-12 from-gray-600 to-[#050a34] p-4 rounded-lg"
     >
-      <h1 className="[font-size:clamp(1.5rem,8vw,3.5rem)] font-bold md:leading-loose text-[var(--heading)]">
-        Let's Make Something Better Together...
-      </h1>
-      <div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
-          <label
-            className="text-[var(--heading)] [font-size:clamp(0.7rem,3vw,1rem)] mb-2 block"
-            htmlFor="email"
-          >
-            Email
-          </label>
-          <input
-            className="border block w-full text-[#fefefe] border-[#414141] px-4 py-2 rounded-md bg-transparent focus:border-none focus:outline-none"
-            required
-            name="email"
-            id="email"
-            type="text"
-          ></input>
+          <Card className="bg-white/20 backdrop-blur-lg border-none text-white">
+            <CardContent className="p-6">
+              <h2 className="text-2xl font-semibold mb-4">Contact Information</h2>
+              <div className="space-y-4">
+                <div className="flex items-center">
+                  <Phone className="mr-2" />
+                  <span>+1 (555) 123-4567</span>
+                </div>
+                <div className="flex items-center">
+                  <Mail className="mr-2" />
+                  <span>hello@example.com</span>
+                </div>
+                <div className="flex items-center">
+                  <MapPin className="mr-2" />
+                  <span>123 Web Dev Lane, Internet City, 12345</span>
+                </div>
+              </div>
+              <div className="mt-6 flex space-x-4">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="bg-white/20 hover:bg-white/30"
+                >
+                  <Github className="h-4 w-4" />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="bg-white/20 hover:bg-white/30"
+                >
+                  <Linkedin className="h-4 w-4" />
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="mt-8 bg-white/10 backdrop-blur-lg border-none overflow-hidden">
+            <CardContent className="p-0">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1845281395714!2d-73.98509668459375!3d40.74881797932847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1629794000000!5m2!1sen!2sus"
+                width="100%"
+                height="200"
+                allowFullScreen
+                loading="lazy"
+              ></iframe>
+            </CardContent>
+          </Card>
         </div>
-        <div className="">
-          <label
-            htmlFor="textarea"
-            className="[font-size:clamp(0.7rem,3vw,1rem)] block my-2 text-[var(--heading)]"
-          >
-            Message
-          </label>
-          <textarea
-            className="block w-full bg-transparent text-[#fefefe] focus:border-none focus:outline-none border border-[#414141] px-4 py-2 rounded-md"
-            required
-            cols="50"
-            rows="10"
-            id="textarea"
-            name="textarea"
-          ></textarea>
+
+        <div>
+          <Card className="bg-white/10 backdrop-blur-lg border-none">
+            <CardContent className="p-6">
+              <h2 className="text-2xl font-semibold mb-4 text-white">
+                Send a Message
+              </h2>
+              {isSubmitted ? (
+                <div className="text-green-400 text-center py-8">
+                  <h3 className="text-xl font-semibold mb-2">
+                    Thank you for your message!
+                  </h3>
+                  <p>We'll get back to you soon.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <Input
+                    placeholder="Your Name"
+                    className="bg-white/90 border-none text-gray-900 placeholder-white/60"
+                  />
+                  <Input
+                    placeholder="Your Email"
+                    type="email"
+                    className="bg-white/90 border-none text-gray-900 placeholder-white/60"
+                  />
+                  <Textarea
+                    placeholder="Your Message"
+                    className="bg-white/60 border-none text-gray-900 placeholder-white/70"
+                    rows={4}
+                  />
+                  <Button
+                    type="submit"
+                    className="w-full bg-pink-600 text-purple-200 hover:bg-white/90"
+                  >
+                    Send Message
+                  </Button>
+                </form>
+              )}
+            </CardContent>
+          </Card>
         </div>
-        <button type="submit" className="bg-sky-500 p-2 my-2 px-6 rounded">
-          Submit
-        </button>
       </div>
-    </footer>
+    </div>
   );
 });
 

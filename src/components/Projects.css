@@ -1,5 +1,5 @@
 .card {
-  --shape-bg:#030724;
+  --shape-bg:#131636;
   &:nth-child(1) .box .icon .iconBox {
     background: #909bcc;
   }
@@ -118,7 +118,6 @@
         .iconBox {
           position: absolute;
           inset:0.5rem;
-          background: #e02424;
           border-radius: 50%;
           display: flex;
           justify-content: center;
