@@ -26,7 +26,9 @@ const Contacts = forwardRef((props, ref) => {
         <div>
           <Card className="bg-white/20 backdrop-blur-lg border-none text-white">
             <CardContent className="p-6">
-              <h2 className="text-2xl font-semibold mb-4">Contact Information</h2>
+              <h2 className="text-2xl font-semibold mb-4">
+                Contact Information
+              </h2>
               <div className="space-y-4">
                 <div className="flex items-center">
                   <Phone className="mr-2" />
@@ -63,7 +65,7 @@ const Contacts = forwardRef((props, ref) => {
           <Card className="mt-8 bg-white/10 backdrop-blur-lg border-none overflow-hidden">
             <CardContent className="p-0">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1845281395714!2d-73.98509668459375!3d40.74881797932847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1629794000000!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3914.562713320003!2d78.58528351461952!3d9.542228992506448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00e55a04000001%3A0x707f81665f4bbf0b!2sParamakudi%2C%20Tamil%20Nadu%20623307%2C%20India!5e0!3m2!1sen!2sus!4v1695142895734!5m2!1sen!2sus"
                 width="100%"
                 height="200"
                 allowFullScreen

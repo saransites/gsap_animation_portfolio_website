@@ -30,10 +30,10 @@ const Projects = forwardRef((props, ref) => {
   return (
     <div
       ref={ref}
-      className="projects grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center gap-4 my-4"
+      className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center gap-4 my-4"
     >
       {projects.map((item, i) => (
-        <div className="card p-1 group">
+        <div className="card p-1 group backdrop-blur-lg">
           <div className="card-inner">
             <div className="box">
               <div className="imgBox">
